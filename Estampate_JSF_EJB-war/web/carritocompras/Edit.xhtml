@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCarritocomprasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCarritocomprasLabel_idcarritocompras}" for="idcarritocompras" />
+                    <h:inputText id="idcarritocompras" value="#{carritocomprasController.selected.idcarritocompras}" title="#{bundle.EditCarritocomprasTitle_idcarritocompras}" required="true" requiredMessage="#{bundle.EditCarritocomprasRequiredMessage_idcarritocompras}"/>
+                    <h:outputLabel value="#{bundle.EditCarritocomprasLabel_preciototal}" for="preciototal" />
+                    <h:inputText id="preciototal" value="#{carritocomprasController.selected.preciototal}" title="#{bundle.EditCarritocomprasTitle_preciototal}" required="true" requiredMessage="#{bundle.EditCarritocomprasRequiredMessage_preciototal}"/>
+                    <h:outputLabel value="#{bundle.EditCarritocomprasLabel_tipopago}" for="tipopago" />
+                    <h:inputText id="tipopago" value="#{carritocomprasController.selected.tipopago}" title="#{bundle.EditCarritocomprasTitle_tipopago}" required="true" requiredMessage="#{bundle.EditCarritocomprasRequiredMessage_tipopago}"/>
+                    <h:outputLabel value="#{bundle.EditCarritocomprasLabel_productoIdproducto}" for="productoIdproducto" />
+                    <h:selectOneMenu id="productoIdproducto" value="#{carritocomprasController.selected.productoIdproducto}" title="#{bundle.EditCarritocomprasTitle_productoIdproducto}" required="true" requiredMessage="#{bundle.EditCarritocomprasRequiredMessage_productoIdproducto}">
+                        <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{carritocomprasController.update}" value="#{bundle.EditCarritocomprasSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCarritocomprasViewLink}"/>
+                <br />
+                <h:commandLink action="#{carritocomprasController.prepareList}" value="#{bundle.EditCarritocomprasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCarritocomprasIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

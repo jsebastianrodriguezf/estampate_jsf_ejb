@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEstampasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEstampasLabel_idestampa}" for="idestampa" />
+                    <h:inputText id="idestampa" value="#{estampasController.selected.idestampa}" title="#{bundle.EditEstampasTitle_idestampa}" required="true" requiredMessage="#{bundle.EditEstampasRequiredMessage_idestampa}"/>
+                    <h:outputLabel value="#{bundle.EditEstampasLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{estampasController.selected.nombre}" title="#{bundle.EditEstampasTitle_nombre}" required="true" requiredMessage="#{bundle.EditEstampasRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditEstampasLabel_tamano}" for="tamano" />
+                    <h:inputText id="tamano" value="#{estampasController.selected.tamano}" title="#{bundle.EditEstampasTitle_tamano}" required="true" requiredMessage="#{bundle.EditEstampasRequiredMessage_tamano}"/>
+                    <h:outputLabel value="#{bundle.EditEstampasLabel_estilo}" for="estilo" />
+                    <h:inputText id="estilo" value="#{estampasController.selected.estilo}" title="#{bundle.EditEstampasTitle_estilo}" required="true" requiredMessage="#{bundle.EditEstampasRequiredMessage_estilo}"/>
+                    <h:outputLabel value="#{bundle.EditEstampasLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{estampasController.selected.precio}" title="#{bundle.EditEstampasTitle_precio}" required="true" requiredMessage="#{bundle.EditEstampasRequiredMessage_precio}"/>
+                    <h:outputLabel value="#{bundle.EditEstampasLabel_urlimagen}" for="urlimagen" />
+                    <h:inputText id="urlimagen" value="#{estampasController.selected.urlimagen}" title="#{bundle.EditEstampasTitle_urlimagen}" required="true" requiredMessage="#{bundle.EditEstampasRequiredMessage_urlimagen}"/>
+                    <h:outputLabel value="#{bundle.EditEstampasLabel_ranking}" for="ranking" />
+                    <h:inputText id="ranking" value="#{estampasController.selected.ranking}" title="#{bundle.EditEstampasTitle_ranking}" required="true" requiredMessage="#{bundle.EditEstampasRequiredMessage_ranking}"/>
+                    <h:outputLabel value="#{bundle.EditEstampasLabel_artistasIdartista}" for="artistasIdartista" />
+                    <h:selectOneMenu id="artistasIdartista" value="#{estampasController.selected.artistasIdartista}" title="#{bundle.EditEstampasTitle_artistasIdartista}" required="true" requiredMessage="#{bundle.EditEstampasRequiredMessage_artistasIdartista}">
+                        <f:selectItems value="#{artistasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{estampasController.update}" value="#{bundle.EditEstampasSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEstampasViewLink}"/>
+                <br />
+                <h:commandLink action="#{estampasController.prepareList}" value="#{bundle.EditEstampasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEstampasIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

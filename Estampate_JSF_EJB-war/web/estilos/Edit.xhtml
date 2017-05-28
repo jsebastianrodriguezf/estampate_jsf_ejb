@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEstilosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEstilosLabel_idestilo}" for="idestilo" />
+                    <h:inputText id="idestilo" value="#{estilosController.selected.idestilo}" title="#{bundle.EditEstilosTitle_idestilo}" required="true" requiredMessage="#{bundle.EditEstilosRequiredMessage_idestilo}"/>
+                    <h:outputLabel value="#{bundle.EditEstilosLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{estilosController.selected.nombre}" title="#{bundle.EditEstilosTitle_nombre}" required="true" requiredMessage="#{bundle.EditEstilosRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditEstilosLabel_administradoresIdadministrador}" for="administradoresIdadministrador" />
+                    <h:selectOneMenu id="administradoresIdadministrador" value="#{estilosController.selected.administradoresIdadministrador}" title="#{bundle.EditEstilosTitle_administradoresIdadministrador}" required="true" requiredMessage="#{bundle.EditEstilosRequiredMessage_administradoresIdadministrador}">
+                        <f:selectItems value="#{administradoresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{estilosController.update}" value="#{bundle.EditEstilosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEstilosViewLink}"/>
+                <br />
+                <h:commandLink action="#{estilosController.prepareList}" value="#{bundle.EditEstilosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEstilosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

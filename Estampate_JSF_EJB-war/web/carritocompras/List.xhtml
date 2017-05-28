@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCarritocomprasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCarritocomprasEmpty}" rendered="#{carritocomprasController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{carritocomprasController.items.rowCount > 0}">
+                    <h:outputText value="#{carritocomprasController.pagination.pageFirstItem + 1}..#{carritocomprasController.pagination.pageLastItem + 1}/#{carritocomprasController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{carritocomprasController.previous}" value="#{bundle.Previous} #{carritocomprasController.pagination.pageSize}" rendered="#{carritocomprasController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{carritocomprasController.next}" value="#{bundle.Next} #{carritocomprasController.pagination.pageSize}" rendered="#{carritocomprasController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{carritocomprasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarritocomprasTitle_idcarritocompras}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idcarritocompras}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarritocomprasTitle_preciototal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.preciototal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarritocomprasTitle_tipopago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipopago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarritocomprasTitle_productoIdproducto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productoIdproducto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{carritocomprasController.prepareView}" value="#{bundle.ListCarritocomprasViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{carritocomprasController.prepareEdit}" value="#{bundle.ListCarritocomprasEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{carritocomprasController.destroy}" value="#{bundle.ListCarritocomprasDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{carritocomprasController.prepareCreate}" value="#{bundle.ListCarritocomprasCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCarritocomprasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
