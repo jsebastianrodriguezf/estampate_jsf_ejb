@@ -1,11 +1,18 @@
 package co.edu.uniminuto.estampatejsfejb.vista.managedbeans;
 
+import co.edu.uniminuto.estampatejsfejb.entitys.Colores;
 import co.edu.uniminuto.estampatejsfejb.entitys.Estampas;
+import co.edu.uniminuto.estampatejsfejb.entitys.Estilos;
+import co.edu.uniminuto.estampatejsfejb.entitys.Tallas;
+import co.edu.uniminuto.estampatejsfejb.session.ColoresFacade;
 import co.edu.uniminuto.estampatejsfejb.vista.managedbeans.util.JsfUtil;
 import co.edu.uniminuto.estampatejsfejb.vista.managedbeans.util.PaginationHelper;
 import co.edu.uniminuto.estampatejsfejb.session.EstampasFacade;
+import co.edu.uniminuto.estampatejsfejb.session.EstilosFacade;
+import co.edu.uniminuto.estampatejsfejb.session.TallasFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -17,6 +24,8 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean(name = "estampasController")
 @SessionScoped
@@ -28,6 +37,15 @@ public class EstampasController implements Serializable {
     private co.edu.uniminuto.estampatejsfejb.session.EstampasFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+
+    @EJB
+    EstampasFacade EstampasFacade;
+    @EJB
+    ColoresFacade ColoresFacade;
+    @EJB
+    TallasFacade TallasFacade;
+    @EJB
+    EstilosFacade EstilosFacade;
 
     public EstampasController() {
     }
@@ -67,9 +85,18 @@ public class EstampasController implements Serializable {
         return "List";
     }
 
-    public String prepareView() {
+    public String prepareView(HttpServletRequest request) {
         current = (Estampas) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+
+        HttpSession session = request.getSession();
+
+        List<Colores> colores = ColoresFacade.findAll();
+        List<Tallas> tallas = TallasFacade.findAll();
+        List<Estilos> estilos = EstilosFacade.findAll();
+        session.setAttribute("colores", colores);
+        session.setAttribute("tallas", tallas);
+        session.setAttribute("estilos", estilos);
         return "View";
     }
 
