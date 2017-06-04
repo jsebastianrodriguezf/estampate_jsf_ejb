@@ -12,7 +12,7 @@
         <ui:define name="body">
             <div id="web">
                 <div id="superior">
-                    <header><a href="Inicio.html"><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></a></header>
+                    <header><h:link outcome="ListArtista"><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></h:link></header>
                     <div id="usuario">
                         <br></br><label id="nombre">Sebastián Rodríguez</label>
                         <br></br><label id="tipo">Artista</label>
@@ -20,8 +20,8 @@
                     <div id="navegador">
                         <nav>
                             <ul>
-                                <li><a href="Inicio.html">Ver Estampas</a></li>
-                                <li><a href="subirEstampa.html">Subir Estampa</a></li>
+                                <li><a href="../index.xhtml">Ver Estampas</a></li>
+                                <li><a href="Create.xhtml">Subir Estampa</a></li>
                                 <li><a href="perfilUsuario.html">Configurar Perfil</a></li>
                                 <li><a href="carritoCompra.html">Carrito de Compras</a></li>
                             </ul>
@@ -68,13 +68,6 @@
                         </div>                                                   
                         <h:commandLink action="#{estampasController.update}" value="#{bundle.EditEstampasSaveLink}"/>
                         <br />
-                        <br />
-                        <h:link outcome="View" value="#{bundle.EditEstampasViewLink}"/>
-                        <br />
-                        <h:commandLink action="#{estampasController.prepareList}" value="#{bundle.EditEstampasShowAllLink}" immediate="true"/>
-                        <br />
-                        <br />
-                        <h:link outcome="/index" value="#{bundle.EditEstampasIndexLink}" />
                     </h:form>
                 </div>
                 <!--<footer><center>Proyecto de Arquitectura de Software || UNIMINUTO</center></footer>-->
