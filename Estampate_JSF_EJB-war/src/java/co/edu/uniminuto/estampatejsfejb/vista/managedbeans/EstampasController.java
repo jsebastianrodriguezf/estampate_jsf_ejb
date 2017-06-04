@@ -91,12 +91,25 @@ public class EstampasController implements Serializable {
 
         HttpSession session = request.getSession();
 
+        List<Estampas> estampas = EstampasFacade.findAll();
+        Estampas aux;
+        int idEstampa = current.getIdestampa();
+        for (int i = 0; i < estampas.size(); i++) {
+            aux = (Estampas) estampas.get(i);
+            if (idEstampa == aux.getIdestampa()) {
+                estampas.clear();
+                estampas.add(aux);
+                i = estampas.size();
+            }
+        }
+
         List<Colores> colores = ColoresFacade.findAll();
         List<Tallas> tallas = TallasFacade.findAll();
         List<Estilos> estilos = EstilosFacade.findAll();
         session.setAttribute("colores", colores);
         session.setAttribute("tallas", tallas);
         session.setAttribute("estilos", estilos);
+        session.setAttribute("estampas", estampas);
         return "View";
     }
 
