@@ -76,6 +76,16 @@ public class Producto implements Serializable {
         this.cantidad = cantidad;
     }
 
+     public Producto(Collection<Carritocompras> carritocomprasCollection, int cantidad, Colores coloresIdcolor, Compradores compradoresIdcomprador, Estampas estampasIdestampa, Estilos estilosIdestilo, Tallas tallasIdtalla) {
+        this.carritocomprasCollection = carritocomprasCollection;
+        this.cantidad = cantidad;
+        this.coloresIdcolor = coloresIdcolor;
+        this.compradoresIdcomprador = compradoresIdcomprador;
+        this.estampasIdestampa = estampasIdestampa;
+        this.estilosIdestilo = estilosIdestilo;
+        this.tallasIdtalla = tallasIdtalla;
+    }
+    
     public Integer getIdproducto() {
         return idproducto;
     }
