@@ -1,5 +1,6 @@
 package co.edu.uniminuto.estampatejsfejb.servlets;
 
+import co.edu.uniminuto.estampatejsfejb.entitys.Colores;
 import co.edu.uniminuto.estampatejsfejb.entitys.Producto;
 import co.edu.uniminuto.estampatejsfejb.session.ColoresFacade;
 import co.edu.uniminuto.estampatejsfejb.session.CompradoresFacade;
@@ -9,6 +10,7 @@ import co.edu.uniminuto.estampatejsfejb.session.ProductoFacade;
 import co.edu.uniminuto.estampatejsfejb.session.TallasFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +38,7 @@ public class crearProducto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Producto objProducto = new Producto(null, 1, coloresFacade.find(Integer.parseInt(request.getParameter("idColor"))), compradoresFacade.find(2), estampasFacade.find(Integer.parseInt(request.getParameter("idEstampa"))), estilosFacade.find(Integer.parseInt(request.getParameter("idEstilo"))), tallasFacade.find(Integer.parseInt(request.getParameter("idTalla"))));
+        Producto objProducto = new Producto(null, Integer.parseInt(request.getParameter("cantidad")), coloresFacade.find(Integer.parseInt(request.getParameter("idColor"))), compradoresFacade.find(2), estampasFacade.find(Integer.parseInt(request.getParameter("idEstampa"))), estilosFacade.find(Integer.parseInt(request.getParameter("idEstilo"))), tallasFacade.find(Integer.parseInt(request.getParameter("idTalla"))));
         productoFacade.create(objProducto);
 
         try (PrintWriter out = response.getWriter()) {
@@ -44,10 +46,13 @@ public class crearProducto extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet crearProducto</title>");
+            out.println("<title>Creación del producto</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet crearProducto at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Creando Producto ... </h1>");
+            List<Producto> producto = productoFacade.findAll();
+            out.println("<script>alert( "+ (producto.size()) +");</script>");
+            response.sendRedirect("/Estampate_JSF_EJB-war/faces/estampas/ListComprador.xhtml");
             out.println("</body>");
             out.println("</html>");
         }
