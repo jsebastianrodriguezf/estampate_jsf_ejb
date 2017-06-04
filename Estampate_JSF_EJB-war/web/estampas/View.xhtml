@@ -8,10 +8,10 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
+
         </ui:define>
 
-        <ui:define name="body">
+        <ui:define name="body"><link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
             <div id="web">
                 <div id="superior">
                     <header><h:link outcome="ListComprador"><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></h:link></header>
@@ -40,8 +40,10 @@
                                 <a href="Imagenes/halloween.jpg"><img src="#{estampasController.selected.urlimagen}" width="50%" height="50%" alt="imagenEstampa" /></a> 
                             </div>
                         </div>
-                        <div id="right">
-                            <div id="left" style="height: 66%;">
+                    </h:form>
+                    <div id="right">
+                        <div id="left" style="height: 66%;">
+                            <h:form>
                                 <table style="padding-top: 10%;">
                                     <tr>
                                         <td><h:outputText value="#{bundle.ViewEstampasLabel_nombre}"/></td>
@@ -64,12 +66,15 @@
                                         <td><h:outputText value="#{estampasController.selected.ranking}" title="#{bundle.ViewEstampasTitle_ranking}"/><br /></td>
                                     </tr>
                                 </table>
-                            </div>
+                            </h:form>
+                        </div>
+
+                        <form action="../crearProducto" method="POST">
 
                             <div id="right" style="height: 66%;">
                                 <table style="padding-top: 10%;">
                                     <tr>
-                                        <td><h:outputLabel value="#{bundle.ViewTallasLabel_tamano}"/></td>
+                                        <td><h:outputLabel value="Tamaño: "/></td>
                                         <td>
                                             <select name="idTalla" class="descripcion">
                                                 <c:forEach items="${tallas}" var="e" >
@@ -79,7 +84,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel value="#{bundle.ViewColoresLabel_nombre}"/></td>
+                                        <td><h:outputLabel value="Color: "/></td>
                                         <td>
                                             <select name="idColor" class="descripcion">
                                                 <c:forEach items="${colores}" var="e" >
@@ -89,7 +94,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel value="#{bundle.ViewEstilosLabel_nombre}"/></td>
+                                        <td><h:outputLabel value="Estilo: "/></td>
 
                                         <td><select name="idEstilo" class="descripcion">
                                                 <c:forEach items="${estilos}" var="e" >
@@ -100,27 +105,31 @@
                                     </tr>
                                 </table>
                             </div>
-
+                            <c:forEach items="${estampas}" var="e" >
+                                <input type="text" name="idEstampa" id="idEstampa" value="${e.idestampa}" hidden=""/>
+                            </c:forEach>
                             <div id="botonesCamiseta">
                                 <br />
                                 <br />
                                 <table>
                                     <tr>
                                         <td>
-                                            <h:outputLabel value="#{bundle.ViewTallasLabel_tamano}"/>
-                                            <input type="number" name="cantidad" id="cantidad">
+                                            <h:outputLabel value="Cantidad: "/>
+                                            <input type="number" name="cantidad" id="cantidad" min="1" style="width: 15%;" value="1"/>
                                         </td>
                                     </tr>
                                     <tr><td><h:outputText value=" "/></td></tr><tr><td><h:outputText value=" "/></td></tr><tr><td><h:outputText value=" "/></td></tr><tr><td><h:outputText value=" "/></td></tr>
                                     <tr>
                                         <td>
-                                            <h:commandLink action="#{productoController.create}" value="Agregar CC" />
+                                            <button type="submit" name="agregarcc" value="agregarcc">Agregar CC</button>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                        </div>
-                    </h:form>
+                        </form>
+                    </div>
+
+
                 </div>
                 <!--<footer><center>Proyecto de Arquitectura de Software || UNIMINUTO</center></footer>-->
             </div>
