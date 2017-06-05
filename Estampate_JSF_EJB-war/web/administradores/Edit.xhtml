@@ -6,32 +6,58 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.EditAdministradoresTitle}"></h:outputText>
+ <ui:define name="title">
+            <link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditAdministradoresLabel_idadministrador}" for="idadministrador" />
-                    <h:inputText id="idadministrador" value="#{administradoresController.selected.idadministrador}" title="#{bundle.EditAdministradoresTitle_idadministrador}" required="true" requiredMessage="#{bundle.EditAdministradoresRequiredMessage_idadministrador}"/>
-                    <h:outputLabel value="#{bundle.EditAdministradoresLabel_nombre}" for="nombre" />
-                    <h:inputText id="nombre" value="#{administradoresController.selected.nombre}" title="#{bundle.EditAdministradoresTitle_nombre}" required="true" requiredMessage="#{bundle.EditAdministradoresRequiredMessage_nombre}"/>
-                    <h:outputLabel value="#{bundle.EditAdministradoresLabel_contrasena}" for="contrasena" />
-                    <h:inputText id="contrasena" value="#{administradoresController.selected.contrasena}" title="#{bundle.EditAdministradoresTitle_contrasena}" required="true" requiredMessage="#{bundle.EditAdministradoresRequiredMessage_contrasena}"/>
-                </h:panelGrid>
-                <h:commandLink action="#{administradoresController.update}" value="#{bundle.EditAdministradoresSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditAdministradoresViewLink}"/>
-                <br />
-                <h:commandLink action="#{administradoresController.prepareList}" value="#{bundle.EditAdministradoresShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditAdministradoresIndexLink}" />
-            </h:form>
+            <div id="web">
+                <div id="superior">
+                    <header><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></header>
+                    <div id="usuario">
+                        <br></br><label id="nombre">Sebastián Rodríguez</label>
+                        <br></br><label id="tipo">Administrador</label>
+                    </div>
+                    <div id="navegador">
+                        <nav>
+                            <ul>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="contenido">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                <h:form >
+                    <h:panelGroup id="messagePanel" layout="block">
+                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                        </h:panelGroup>
+                    <center>
+                    <h:panelGrid columns="2">
+                        
+                        <h:inputHidden id="idadministrador" value="#{administradoresController.selected.idadministrador}" required="true" requiredMessage="#{bundle.EditAdministradoresRequiredMessage_idadministrador}"/>
+                        <h:outputLabel value="#{bundle.EditAdministradoresLabel_nombre}" for="nombre" /> <br></br>
+                        <h:inputText id="nombre" value="#{administradoresController.selected.nombre}" title="#{bundle.EditAdministradoresTitle_nombre}" required="true" requiredMessage="#{bundle.EditAdministradoresRequiredMessage_nombre}"/><br></br>
+                        <h:outputLabel value="#{bundle.EditAdministradoresLabel_contrasena}" for="contrasena" /><br></br>
+                        <h:inputText id="contrasena" value="#{administradoresController.selected.contrasena}" title="#{bundle.EditAdministradoresTitle_contrasena}" required="true" requiredMessage="#{bundle.EditAdministradoresRequiredMessage_contrasena}"/>
+                    </h:panelGrid>
+                        <h:commandButton action="#{administradoresController.update}" value="#{bundle.EditAdministradoresSaveLink}"/>
+                    <br />
+                    <br />
+                    
+                    <br />
+                    <br />
+                    <br />
+                     <center>
+
+                        <button id="Artista">  <a href="List.xhtml">Volver</a></button>
+                    </center>
+                    </center>
+                </h:form>
+                    </div>
+            </div>
         </ui:define>
     </ui:composition>
 

@@ -6,32 +6,55 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.EditCompradoresTitle}"></h:outputText>
+ <ui:define name="title">
+            <link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditCompradoresLabel_idcomprador}" for="idcomprador" />
-                    <h:inputText id="idcomprador" value="#{compradoresController.selected.idcomprador}" title="#{bundle.EditCompradoresTitle_idcomprador}" required="true" requiredMessage="#{bundle.EditCompradoresRequiredMessage_idcomprador}"/>
-                    <h:outputLabel value="#{bundle.EditCompradoresLabel_nombre}" for="nombre" />
-                    <h:inputText id="nombre" value="#{compradoresController.selected.nombre}" title="#{bundle.EditCompradoresTitle_nombre}" required="true" requiredMessage="#{bundle.EditCompradoresRequiredMessage_nombre}"/>
-                    <h:outputLabel value="#{bundle.EditCompradoresLabel_contrasena}" for="contrasena" />
-                    <h:inputText id="contrasena" value="#{compradoresController.selected.contrasena}" title="#{bundle.EditCompradoresTitle_contrasena}" required="true" requiredMessage="#{bundle.EditCompradoresRequiredMessage_contrasena}"/>
-                </h:panelGrid>
-                <h:commandLink action="#{compradoresController.update}" value="#{bundle.EditCompradoresSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditCompradoresViewLink}"/>
-                <br />
-                <h:commandLink action="#{compradoresController.prepareList}" value="#{bundle.EditCompradoresShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditCompradoresIndexLink}" />
-            </h:form>
+            <div id="web">
+                <div id="superior">
+                    <header><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></header>
+                    <div id="usuario">
+                        <br></br><label id="nombre">Sebastián Rodríguez</label>
+                        <br></br><label id="tipo">Artista</label>
+                    </div>
+                    <div id="navegador">
+                        <nav>
+                            <ul>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="contenido">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                <h:form >
+                    <center>
+                        <h:panelGrid columns="2">
+                            
+                            <h:inputHidden id="idcomprador" value="#{compradoresController.selected.idcomprador}" required="true" requiredMessage="#{bundle.EditCompradoresRequiredMessage_idcomprador}"/>
+                            <h:outputLabel value="#{bundle.EditCompradoresLabel_nombre}" for="nombre" /><br></br>
+                            <h:inputText id="nombre" value="#{compradoresController.selected.nombre}" title="#{bundle.EditCompradoresTitle_nombre}" required="true" requiredMessage="#{bundle.EditCompradoresRequiredMessage_nombre}"/><br></br>
+                            <h:outputLabel value="#{bundle.EditCompradoresLabel_contrasena}" for="contrasena" /><br></br>
+                            <h:inputText id="contrasena" value="#{compradoresController.selected.contrasena}" title="#{bundle.EditCompradoresTitle_contrasena}" required="true" requiredMessage="#{bundle.EditCompradoresRequiredMessage_contrasena}"/>
+                        </h:panelGrid>
+                        <h:commandButton action="#{compradoresController.update}" value="#{bundle.EditCompradoresSaveLink}"/>
+                        <br />
+                        <br />
+
+                        <br />
+                    </center>
+                    <br />
+                    <br />
+                    <center>
+
+                        <button id="Artista">  <a href="List.xhtml">Volver</a></button>
+                    </center>
+                </h:form>
+                    </div>
+            </div>
         </ui:define>
     </ui:composition>
 

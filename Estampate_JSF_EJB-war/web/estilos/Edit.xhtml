@@ -4,36 +4,57 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.EditEstilosTitle}"></h:outputText>
+<ui:composition template="/template.xhtml">
+ <ui:define name="title">
+            <link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
+            <div id="web">
+                <div id="superior">
+                    <header><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></header>
+                    <div id="usuario">
+                        
+                    </div>
+                    <div id="navegador">
+                        <nav>
+                            <ul>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="contenido">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                <h:form >
+                    <center>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditEstilosLabel_idestilo}" for="idestilo" />
-                    <h:inputText id="idestilo" value="#{estilosController.selected.idestilo}" title="#{bundle.EditEstilosTitle_idestilo}" required="true" requiredMessage="#{bundle.EditEstilosRequiredMessage_idestilo}"/>
-                    <h:outputLabel value="#{bundle.EditEstilosLabel_nombre}" for="nombre" />
+                    
+                    <h:inputHidden id="idestilo" value="#{estilosController.selected.idestilo}"  required="true" requiredMessage="#{bundle.EditEstilosRequiredMessage_idestilo}"/>
+                    <h:outputLabel value="#{bundle.EditEstilosLabel_nombre}" for="nombre" /><br></br>
                     <h:inputText id="nombre" value="#{estilosController.selected.nombre}" title="#{bundle.EditEstilosTitle_nombre}" required="true" requiredMessage="#{bundle.EditEstilosRequiredMessage_nombre}"/>
-                    <h:outputLabel value="#{bundle.EditEstilosLabel_administradoresIdadministrador}" for="administradoresIdadministrador" />
+                    
                     <h:selectOneMenu id="administradoresIdadministrador" value="#{estilosController.selected.administradoresIdadministrador}" title="#{bundle.EditEstilosTitle_administradoresIdadministrador}" required="true" requiredMessage="#{bundle.EditEstilosRequiredMessage_administradoresIdadministrador}">
                         <f:selectItems value="#{administradoresController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{estilosController.update}" value="#{bundle.EditEstilosSaveLink}"/>
+                    <h:commandButton action="#{estilosController.update}" value="#{bundle.EditEstilosSaveLink}"/>
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditEstilosViewLink}"/>
+           
                 <br />
-                <h:commandLink action="#{estilosController.prepareList}" value="#{bundle.EditEstilosShowAllLink}" immediate="true"/>
+                </center>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.EditEstilosIndexLink}" />
+                <center>
+
+                        <button id="Contenido">  <a href="List.xhtml">Volver</a></button>
+                    </center>
             </h:form>
+       </div>
+            </div>
         </ui:define>
     </ui:composition>
 
