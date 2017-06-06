@@ -4,16 +4,32 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.CreateColoresTitle}"></h:outputText>
+<ui:composition template="/template.xhtml">
+ <ui:define name="title">
+            <link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+            <div id="web">
+                <div id="superior">
+                    <header><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></header>
+                    <div id="usuario">
+                        
+                    </div>
+                    <div id="navegador">
+                        <nav>
+                            <ul>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="contenido">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
             <h:form>
+                <center>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateColoresLabel_idcolor}" for="idcolor" />
                     <h:inputText id="idcolor" value="#{coloresController.selected.idcolor}" title="#{bundle.CreateColoresTitle_idcolor}" required="true" requiredMessage="#{bundle.CreateColoresRequiredMessage_idcolor}"/>
@@ -24,15 +40,23 @@
                         <f:selectItems value="#{administradoresController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
+                    
+                    
                 <br />
-                <h:commandLink action="#{coloresController.create}" value="#{bundle.CreateColoresSaveLink}" />
+                <h:commandButton action="#{coloresController.create}" value="#{bundle.CreateColoresSaveLink}" />
+                <br />
+                </center>
                 <br />
                 <br />
-                <h:commandLink action="#{coloresController.prepareList}" value="#{bundle.CreateColoresShowAllLink}" immediate="true"/>
                 <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateColoresIndexLink}"/>
+                
+                <center>
+
+                    <button id="idcolor">  <a href="List.xhtml">Volver</a></button>
+                        </center>
             </h:form>
+     </div>
+                </div>
         </ui:define>
     </ui:composition>
 

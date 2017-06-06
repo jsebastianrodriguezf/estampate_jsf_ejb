@@ -4,33 +4,55 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.CreateCompradoresTitle}"></h:outputText>
+<ui:composition template="/template.xhtml">
+ <ui:define name="title">
+            <link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+            <div id="web">
+                <div id="superior">
+                    <header><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></header>
+                    <div id="usuario">
+                        
+                    </div>
+                    <div id="navegador">
+                        <nav>
+                            <ul>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="contenido">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
             <h:form>
+                  <center>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateCompradoresLabel_idcomprador}" for="idcomprador" />
-                    <h:inputText id="idcomprador" value="#{compradoresController.selected.idcomprador}" title="#{bundle.CreateCompradoresTitle_idcomprador}" required="true" requiredMessage="#{bundle.CreateCompradoresRequiredMessage_idcomprador}"/>
-                    <h:outputLabel value="#{bundle.CreateCompradoresLabel_nombre}" for="nombre" />
-                    <h:inputText id="nombre" value="#{compradoresController.selected.nombre}" title="#{bundle.CreateCompradoresTitle_nombre}" required="true" requiredMessage="#{bundle.CreateCompradoresRequiredMessage_nombre}"/>
-                    <h:outputLabel value="#{bundle.CreateCompradoresLabel_contrasena}" for="contrasena" />
+                    
+                    <h:inputHidden id="idcomprador" value="#{compradoresController.selected.idcomprador}"  required="false" requiredMessage="#{bundle.CreateCompradoresRequiredMessage_idcomprador}"/>
+                    <h:outputLabel value="#{bundle.CreateCompradoresLabel_nombre}" for="nombre" /><br></br>
+                    <h:inputText id="nombre" value="#{compradoresController.selected.nombre}" title="#{bundle.CreateCompradoresTitle_nombre}" required="true" requiredMessage="#{bundle.CreateCompradoresRequiredMessage_nombre}"/><br></br>
+                    <h:outputLabel value="#{bundle.CreateCompradoresLabel_contrasena}" for="contrasena" /><br></br>
                     <h:inputText id="contrasena" value="#{compradoresController.selected.contrasena}" title="#{bundle.CreateCompradoresTitle_contrasena}" required="true" requiredMessage="#{bundle.CreateCompradoresRequiredMessage_contrasena}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{compradoresController.create}" value="#{bundle.CreateCompradoresSaveLink}" />
+                <h:commandButton action="#{compradoresController.create}" value="#{bundle.CreateCompradoresSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{compradoresController.prepareList}" value="#{bundle.CreateCompradoresShowAllLink}" immediate="true"/>
                 <br />
+               </center>
                 <br />
-                <h:link outcome="/index" value="#{bundle.CreateCompradoresIndexLink}"/>
+                <center>
+
+                    <button id="idcomprador">  <a href="List.xhtml">Volver</a></button>
+                        </center>
+                <br />
             </h:form>
+         </div>
+                </div>
         </ui:define>
     </ui:composition>
 

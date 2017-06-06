@@ -4,35 +4,60 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.CreateEstilosTitle}"></h:outputText>
+<ui:composition template="/template.xhtml">
+ <ui:define name="title">
+            <link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+            <div id="web">
+                <div id="superior">
+                    <header><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></header>
+                    <div id="usuario">
+                        
+                    </div>
+                    <div id="navegador">
+                        <nav>
+                            <ul>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="contenido">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
             <h:form>
+                <center>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateEstilosLabel_idestilo}" for="idestilo" />
-                    <h:inputText id="idestilo" value="#{estilosController.selected.idestilo}" title="#{bundle.CreateEstilosTitle_idestilo}" required="true" requiredMessage="#{bundle.CreateEstilosRequiredMessage_idestilo}"/>
-                    <h:outputLabel value="#{bundle.CreateEstilosLabel_nombre}" for="nombre" />
-                    <h:inputText id="nombre" value="#{estilosController.selected.nombre}" title="#{bundle.CreateEstilosTitle_nombre}" required="true" requiredMessage="#{bundle.CreateEstilosRequiredMessage_nombre}"/>
-                    <h:outputLabel value="#{bundle.CreateEstilosLabel_administradoresIdadministrador}" for="administradoresIdadministrador" />
-                    <h:selectOneMenu id="administradoresIdadministrador" value="#{estilosController.selected.administradoresIdadministrador}" title="#{bundle.CreateEstilosTitle_administradoresIdadministrador}" required="true" requiredMessage="#{bundle.CreateEstilosRequiredMessage_administradoresIdadministrador}">
-                        <f:selectItems value="#{administradoresController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
+                    
+                    
+                    <h:outputLabel value="#{bundle.CreateEstilosLabel_nombre}" for="nombre" /><br></br>
+                    <h:inputText id="nombre" value="#{estilosController.selected.nombre}" title="#{bundle.CreateEstilosTitle_nombre}"  requiredMessage="#{bundle.CreateEstilosRequiredMessage_nombre}"/>
+                    
+                    
+                    
+                    <h:inputHidden id="Idadministrador" value="#{estilosController.selected.administradoresIdadministrador}" required="false" requiredMessage="#{bundle.CreateEstilosRequiredMessage_administradoresIdadministrador}"/>
+
+                    
                 </h:panelGrid>
+                    
+                      <h:commandButton action="#{estilosController.create}" value="#{bundle.CreateEstilosSaveLink}" />
+                    </center> 
                 <br />
-                <h:commandLink action="#{estilosController.create}" value="#{bundle.CreateEstilosSaveLink}" />
+              
                 <br />
                 <br />
-                <h:commandLink action="#{estilosController.prepareList}" value="#{bundle.CreateEstilosShowAllLink}" immediate="true"/>
                 <br />
+                <center>
+
+                    <button id="Estampa">  <a href="List.xhtml">Volver</a></button>
+                        </center>
                 <br />
-                <h:link outcome="/index" value="#{bundle.CreateEstilosIndexLink}"/>
             </h:form>
+        </div>
+                </div>
         </ui:define>
     </ui:composition>
 
