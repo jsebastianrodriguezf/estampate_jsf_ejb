@@ -6,11 +6,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: #3a4f54;
     background-color: #dfecf1;
-    font-size: small;
+    font-size: big;
 }
 
 a {
-    color: #e33b06;
+    color: red;
 }
 
 table {
@@ -18,26 +18,26 @@ table {
 }
 
 form.jsfcrud_list_form th, td th {
-    font-size: x-small;
-    color: #4e6a71;
-    border-top-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-color: #b2d5d6;
-    border-bottom-color: #b2d5d6;
-    border-left-color: #90b4bd;
-    border-right-color: #90b4bd;
-    letter-spacing: 3px;
+    font-size: big;
+    color: black;
+    border-top-style: 1px solid black;
+    border-bottom-style: 1px solid black;
+    border-left-style: 1px solid black;
+    border-right-style: 1px solid black;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-color: 1px solid black;
+    border-bottom-color: 1px solid black;
+    border-left-color: 1px solid black;
+    border-right-color: 1px solid black;
+    letter-spacing: 4px;
     text-align: left;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 6px;
-    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
     background-color: #b2d5d6;
 }
 
@@ -48,20 +48,20 @@ td {
 }
 
 form.jsfcrud_list_form td, td td {
-    border-top-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-color: #b2d5d6;
-    border-bottom-color: #b2d5d6;
-    border-left-color: #b2d5d6;
-    border-right-color: #b2d5d6;
+    border-top-style: 1px solid black;
+    border-bottom-style: 1px solid black;
+    border-left-style: 1px solid black;
+    border-right-style: 1px solid black;
+    border-top-width: 1px solid black;
+    border-bottom-width: 1px solid black;
+    border-left-width: 1px solid black;
+    border-right-width: 1px solid black;
+    border-top-color: black;
+    border-bottom-color: black;
+    border-left-color: black;
+    border-right-color: black;
     vertical-align: baseline;
-    padding-bottom: 0px;
+    padding-bottom: 1px solid black;
 }
 
 tr.jsfcrud_odd_row {

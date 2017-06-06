@@ -7,55 +7,75 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListAdministradoresTitle}"></h:outputText>
+            <link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListAdministradoresEmpty}" rendered="#{administradoresController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{administradoresController.items.rowCount > 0}">
-                    <h:outputText value="#{administradoresController.pagination.pageFirstItem + 1}..#{administradoresController.pagination.pageLastItem + 1}/#{administradoresController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{administradoresController.previous}" value="#{bundle.Previous} #{administradoresController.pagination.pageSize}" rendered="#{administradoresController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{administradoresController.next}" value="#{bundle.Next} #{administradoresController.pagination.pageSize}" rendered="#{administradoresController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{administradoresController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAdministradoresTitle_idadministrador}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idadministrador}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAdministradoresTitle_nombre}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nombre}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAdministradoresTitle_contrasena}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.contrasena}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{administradoresController.prepareView}" value="#{bundle.ListAdministradoresViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{administradoresController.prepareEdit}" value="#{bundle.ListAdministradoresEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{administradoresController.destroy}" value="#{bundle.ListAdministradoresDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{administradoresController.prepareCreate}" value="#{bundle.ListAdministradoresCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListAdministradoresIndexLink}"/>
-            </h:form>
+            <div id="web">
+                <div id="superior">
+                    <header><h:link outcome="/index"><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></h:link></header>
+                    <div id="usuario">
+                        <br></br><label id="nombre">Sebastián Rodríguez</label>
+                        <br></br><label id="tipo">Administrador</label>
+                    </div>
+                    <div id="navegador">
+                        <nav>
+                            <ul>
+                                <li><a href="../index.xhtml">Ver Estampas</a></li>
+                                <li><a href="../colores/List.xhtml">Colores</a></li>  
+                                <li><a href="../estilos/List.xhtml">Estilos</a></li>
+                                <li><a href="../tallas/List.xhtml">Tamaños</a></li>
+                                <li><a href="../artistas/List.xhtml">Ver Artistas</a></li>  
+                                <li><a href="../compradores/List.xhtml">Ver Compradores</a></li>
+                                <li><a href="../index.xhtml">Salir</a></li>
+                                
+                                </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="contenido">
+                <h:form styleClass="jsfcrud_list_form">
+                        <h:panelGroup id="messagePanel" layout="block">
+                            <h:messages errorStyle="color: blue" infoStyle="color: black" layout="table"/>
+                        </h:panelGroup>
+                        <h:outputText escape="false" value="#{bundle.ListAdministradoresEmpty}" rendered="#{administradoresController.items.rowCount == 0}"/>
+                        <h:panelGroup rendered="#{administradoresController.items.rowCount > 0}">
+                            <center>
+                            <h:dataTable value="#{administradoresController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListAdministradoresTitle_idadministrador}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idadministrador}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListAdministradoresTitle_nombre}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListAdministradoresTitle_contrasena}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.contrasena}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="&nbsp;"/>
+                                    </f:facet>
+                                 
+                                    <h:commandLink action="#{administradoresController.destroy}" value="#{bundle.ListAdministradoresDestroyLink}"/>
+                                </h:column>
+                                </h:dataTable>
+                            </center>
+                        </h:panelGroup>
+                        <br />
+                       
+                    </h:form>
+                </div>
+                <!--<footer><center>Proyecto de Arquitectura de Software || UNIMINUTO</center></footer>-->
+            </div>
         </ui:define>
     </ui:composition>
 

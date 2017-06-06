@@ -6,19 +6,40 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListEstilosTitle}"></h:outputText>
+         <ui:define name="title">
+            <link type="text/css" href="../css/estilo.css" rel="Stylesheet"></link>
         </ui:define>
         <ui:define name="body">
+            <div id="web">
+                <div id="superior">
+                    <header><h:link outcome="/index"><img src="../Imagenes/Logo.png" width="80%" height="80%" alt="imagenEstampa" /></h:link></header>
+                    <div id="usuario">
+                        <br></br><label id="nombre">Sebastián Roscon</label>
+                        <br></br><label id="tipo">Administrador</label>
+                    </div>
+                    <div id="navegador">
+                        <nav>
+                            <ul>
+                                <li><a href="../index.xhtml">Ver Estampas</a></li>
+                                <li><a href="../colores/List.xhtml">Colores</a></li>  
+                                <li><a href="../estilos/List.xhtml">Estilos</a></li>
+                                <li><a href="../tallas/List.xhtml">Tamaños</a></li>
+                                <li><a href="../artistas/List.xhtml">Ver Artistas</a></li>  
+                                <li><a href="../compradores/List.xhtml">Ver Compradores</a></li>
+                                <li><a href="../index.xhtml">Salir</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="contenido">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListEstilosEmpty}" rendered="#{estilosController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{estilosController.items.rowCount > 0}">
-                    <h:outputText value="#{estilosController.pagination.pageFirstItem + 1}..#{estilosController.pagination.pageLastItem + 1}/#{estilosController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{estilosController.previous}" value="#{bundle.Previous} #{estilosController.pagination.pageSize}" rendered="#{estilosController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{estilosController.next}" value="#{bundle.Next} #{estilosController.pagination.pageSize}" rendered="#{estilosController.pagination.hasNextPage}"/>&nbsp;
+                    <center>
                     <h:dataTable value="#{estilosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
@@ -42,20 +63,19 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{estilosController.prepareView}" value="#{bundle.ListEstilosViewLink}"/>
-                            <h:outputText value=" "/>
+                            
                             <h:commandLink action="#{estilosController.prepareEdit}" value="#{bundle.ListEstilosEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{estilosController.destroy}" value="#{bundle.ListEstilosDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
+                    </center>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{estilosController.prepareCreate}" value="#{bundle.ListEstilosCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListEstilosIndexLink}"/>
-            </h:form>
+               </h:form>
+         </div>
+                <!--<footer><center>Proyecto de Arquitectura de Software || UNIMINUTO</center></footer>-->
+            </div>
         </ui:define>
     </ui:composition>
 

@@ -20,11 +20,12 @@
                     <div id="navegador">
                         <nav>
                             <ul>
-                                <li><a href="../colores/List.xhtml">Subir Color</a></li>  
-                                <li><a href="../estilos/List.xhtml">Subir Estilo</a></li>
-                                <li><a href="../tallas/List.xhtml">Subir tamaño</a></li>
+                                <li><a href="../colores/List.xhtml">Colores</a></li>  
+                                <li><a href="../estilos/List.xhtml">Estilos</a></li>
+                                <li><a href="../tallas/List.xhtml">Tamaños</a></li>
                                 <li><a href="../artistas/List.xhtml">Ver Artistas</a></li>  
                                 <li><a href="../compradores/List.xhtml">Ver Compradores</a></li>
+                                
                               
                             </ul>
                         </nav>
@@ -37,7 +38,11 @@
                             <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                         </h:panelGroup>
 
-                       
+                        <ui:repeat var="item" value="#{estampasController.items}">  
+                            <div class="recuadro">
+                                <img  src="${item.urlimagen}" class="archivosImagen"/>
+                            </div>
+                        </ui:repeat>
                     </h:form>
                 </div>
                 <!--<footer><center>Proyecto de Arquitectura de Software || UNIMINUTO</center></footer>-->

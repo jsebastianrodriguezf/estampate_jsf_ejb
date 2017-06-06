@@ -38,10 +38,9 @@
                     <h:inputText id="tamano" value="#{tallasController.selected.tamano}" title="#{bundle.EditTallasTitle_tamano}" required="true" requiredMessage="#{bundle.EditTallasRequiredMessage_tamano}"/><br></br>
                     <h:outputLabel value="#{bundle.EditTallasLabel_precio}" for="precio" /><br></br>
                     <h:inputText id="precio" value="#{tallasController.selected.precio}" title="#{bundle.EditTallasTitle_precio}" required="true" requiredMessage="#{bundle.EditTallasRequiredMessage_precio}"/>
-                    <h:outputLabel value="#{bundle.EditTallasLabel_administradoresIdadministrador}" for="administradoresIdadministrador" />
-                    <h:selectOneMenu id="administradoresIdadministrador" value="#{tallasController.selected.administradoresIdadministrador}" title="#{bundle.EditTallasTitle_administradoresIdadministrador}" required="true" requiredMessage="#{bundle.EditTallasRequiredMessage_administradoresIdadministrador}">
-                        <f:selectItems value="#{administradoresController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
+                    
+                    <h:inputHidden id="administradoresIdadministrador" value="#{tallasController.selected.administradoresIdadministrador}" required="true" requiredMessage="#{bundle.EditTallasRequiredMessage_administradoresIdadministrador}"/>
+                    
                 </h:panelGrid>
                             <h:commandButton action="#{tallasController.update}" value="#{bundle.EditTallasSaveLink}"/>
                 <br />
